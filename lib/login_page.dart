@@ -40,7 +40,7 @@ class AuthWrapper extends StatelessWidget {
           if (user != null) {
             if (user.emailVerified) {
               // Check for admin email
-              if (user.email == 'admin@example.com') {
+              if (user.email == '') {
                 return AdminPage();
               }
               return HomePage();
@@ -77,13 +77,13 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       // First check for admin credentials
-      if (_emailController.text.trim() == 'admin@example.com' &&
-          _passwordController.text.trim() == 'isadmin@2004') {
+      if (_emailController.text.trim() == '' &&
+          _passwordController.text.trim() == '') {
         // Sign in admin with Firebase
         final adminCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
-              email: 'admin@example.com',
-              password: 'isadmin@2004',
+              email: '',
+              password: '',
             );
 
         if (adminCredential.user != null) {
